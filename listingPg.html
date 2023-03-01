@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <p id="result"></p>
+    <script>
+      function color() {
+        let p = document.getElementById("purple");
+        let y = document.getElementById("yellow");
+        let w = document.getElementById("white");
+        let stem = document.getElementById("stemOptions");
+        let pot = document.getElementById("needPot");
+        let clr;
+        let price;
+        let total;
+        let note;
+        let msg;
+
+        if (p.checked == true) {
+          clr = p.value;
+        } else if (y.checked == true) {
+          clr = y.value;
+        } else {
+          clr = w.value;
+        }
+
+        if (stem.value == "singleStem") {
+          price = 0;
+        } else if (stem.value == "doubleStem") {
+          price = 5;
+        } else if (stem.value == "tripleStem") {
+          price = 8;
+        }
+
+        if (pot.checked == true) {
+          total = price + 5;
+        } else {
+          total = price;
+        }
+
+        msg = document.getElementById("message");
+        if (msg.value != "") {
+          note = "with message: " + msg.value + ".";
+        } else {
+          note = "with no message.";
+        }
+        alert(
+          "You have ordered a " +
+            clr +
+            " " +
+            stem.value +
+            " orchid." +
+            note +
+            "Your total bill is " +
+            total +
+            " £"
+        );
+      }
+    </script>
+
+    <div class="labelOrder">
+      Your Order:
+      <div class="product" id="order">
+        <form>
+          Select Color:
+          <br />
+          <input
+            type="radio"
+            name="orchidColor"
+            id="white"
+            value="white"
+            checked
+          />
+          <label for="white">White</label>
+          <input type="radio" name="orchidColor" id="yellow" value="yellow" />
+          <label for="yellow">Yellow</label>
+          <input type="radio" name="orchidColor" id="purple" value="purple" />
+          <label for="purple">Purple</label>
+          <br /><br />
+          <label for=" stemOptions "></label>
+          No of Stems:
+          <br />
+          <select name="stemOptions" id="stemOptions">
+            <option value="Please Select">PleaseSelect</option>
+            <option value="singleStem">Single Stem</option>
+            <option value="doubleStem">Double Stem £5</option>
+            <option value="tripleStem">Triple Stem £8</option>
+          </select>
+          <br /><br />
+          <label for="message">Add a Note:</label>
+          <input type="text" id="message" name="message" /> <br /><br />
+          <label for="needPot">Add a clay pot </label
+          ><input type="checkbox" id="needPot" name="needPot" /> <br /><br />
+          <label for="totalPrice">Total Price : </label
+          ><input type="text" id="totalPrice" name="totalPrice" />
+          <br />
+          <input type="button" value="Place Order" onclick="color()" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
